@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctoNet", "OctoNet\OctoNet.csproj", "{9D79CEB1-7C0E-47C2-BBB0-4E431E14A741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctoNet.Tests", "OctoNet.Tests\OctoNet.Tests.csproj", "{1824F549-F75D-493C-9B08-A92AC8CAD79D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D79CEB1-7C0E-47C2-BBB0-4E431E14A741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D79CEB1-7C0E-47C2-BBB0-4E431E14A741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D79CEB1-7C0E-47C2-BBB0-4E431E14A741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D79CEB1-7C0E-47C2-BBB0-4E431E14A741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1824F549-F75D-493C-9B08-A92AC8CAD79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1824F549-F75D-493C-9B08-A92AC8CAD79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1824F549-F75D-493C-9B08-A92AC8CAD79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1824F549-F75D-493C-9B08-A92AC8CAD79D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
