@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.102.7\lib\net35\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,8 +46,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OctoNet.cs" />
+    <Compile Include="API.cs" />
+    <Compile Include="Authentication\GitHubOAuthAuthorizer.cs" />
+    <Compile Include="Authentication\IGitHubOAuthAuthorizer.cs" />
+    <Compile Include="Authentication\NullAuthenticator.cs" />
+    <Compile Include="Authentication\Scope.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="GitHubClient.cs" />
+    <Compile Include="GitHubException.cs" />
+    <Compile Include="GitHubRequest.cs" />
+    <Compile Include="GitHubRequestAsyncHandle.cs" />
+    <Compile Include="GitHubResponse.cs" />
+    <Compile Include="GitHubResponseBase.cs" />
+    <Compile Include="Helpers\ResponseProcessor.cs" />
+    <Compile Include="Helpers\RestClientFactory.cs" />
+    <Compile Include="IGitHubClient.cs" />
+    <Compile Include="IGitHubResponse.cs" />
+    <Compile Include="Models\APICallParameters.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Commit.cs" />
+    <Compile Include="Models\CommitComment.cs" />
+    <Compile Include="Models\CommitDetails.cs" />
+    <Compile Include="Models\CommitRange.cs" />
+    <Compile Include="Models\CommitUserSummary.cs" />
+    <Compile Include="Models\Dto\CommentDto.cs" />
+    <Compile Include="Models\Dto\IssueDto.cs" />
+    <Compile Include="Models\Extensions.cs" />
+    <Compile Include="Models\FileChanges.cs" />
+    <Compile Include="Models\Issue.cs" />
+    <Compile Include="Models\Label.cs" />
+    <Compile Include="Models\Link.cs" />
+    <Compile Include="Models\Milestone.cs" />
+    <Compile Include="Models\Plan.cs" />
+    <Compile Include="Models\PullRequest.cs" />
+    <Compile Include="Models\PullRequestLinks.cs" />
+    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IIssueService.cs" />
+    <Compile Include="Services\IOrganizationService.cs" />
+    <Compile Include="Services\IPullRequestService.cs" />
+    <Compile Include="Services\IRepositoryService.cs" />
+    <Compile Include="Services\IssueService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\OrganizationService.cs" />
+    <Compile Include="Services\PullRequestService.cs" />
+    <Compile Include="Services\RepositoryService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Utility\ApiHelpers.cs" />
+    <Compile Include="Utility\Requires.cs" />
+    <Compile Include="Web\ErrorType.cs" />
+    <Compile Include="Web\Extensions.cs" />
+    <Compile Include="Web\Method.cs" />
+    <Compile Include="Web\Parameter.cs" />
+    <Compile Include="Web\ResponseStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
