@@ -20,6 +20,6 @@
   </metadata>
 
   <files>
-    <file src="src\OctoNet\bin\Release\OctoNet.dll" target="lib\net40"/>
+    <file src="OctoNet\bin\Release\OctoNet.dll" target="lib\net40"/>
   </files>
 </package>
