@@ -5,7 +5,6 @@ using OctoNet.Services;
 using OctoNet.Utility;
 using OctoNet.Web;
 using RestSharp;
-using Parameter = OctoNet.Web.Parameter;
 
 namespace OctoNet
 {
@@ -82,16 +81,14 @@ namespace OctoNet
             Action<GitHubException> onError) where TResponseData : new()
         {
             Requires.ArgumentNotNull(request, "request");
-            Requires.ArgumentNotNull(callback, "callback");
-            Requires.ArgumentNotNull(onError, "onError");
-
+            
             var restRequest = new RestRequest
                                   {
                                       Resource = request.Resource,
                                       Method = request.Method.ToRestSharpMethod(),
                                       RequestFormat = DataFormat.Json
                                   };
-            foreach (Parameter p in request.Parameters)
+            foreach (var p in request.Parameters)
             {
                 restRequest.AddParameter(p.Name, p.Value);
             }
@@ -101,25 +98,27 @@ namespace OctoNet
                 restRequest.AddBody(request.Body);
             }
 
-            string baseUrl = (request.Version == API.v3) ? Constants.ApiV3Url : Constants.ApiV2Url;
-            IRestClient restClient = _factory.CreateRestClient(baseUrl);
+            var baseUrl = (request.Version == API.v3) ? Constants.ApiV3Url : Constants.ApiV2Url;
+            var restClient = _factory.CreateRestClient(baseUrl);
             restClient.Authenticator = Authenticator;
 
-            RestRequestAsyncHandle handle = restClient.ExecuteAsync<TResponseData>(
+            var handle = restClient.ExecuteAsync<TResponseData>(
                 restRequest,
                 (r, h) =>
+                {
+                    var response = new GitHubResponse<TResponseData>(r);
+
+                    GitHubException ex;
+                    if (_processor.TryProcessResponseErrors(response, out ex))
                     {
-                        var response = new GitHubResponse<TResponseData>(r);
-
-                        GitHubException ex = null;
-                        if (_processor.TryProcessResponseErrors(response, out ex))
-                        {
+                        if (onError != null)
                             onError(ex);
-                            return;
-                        }
+                        return;
+                    }
 
+                    if (callback != null)
                         callback(response);
-                    });
+                });
 
             return new GitHubRequestAsyncHandle(request, handle);
         }
