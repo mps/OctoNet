@@ -6,6 +6,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OctoNet.Tests", "OctoNet.Tests\OctoNet.Tests.csproj", "{1824F549-F75D-493C-9B08-A92AC8CAD79D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{2490D8AC-CE3D-46E2-A1A4-7301B025F259}"
+	ProjectSection(SolutionItems) = preProject
+		OctoNet.nuspec = OctoNet.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
