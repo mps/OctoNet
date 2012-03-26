@@ -19,9 +19,3 @@ _[Rr]e[Ss]harper.*/
 
 [Tt]est[Rr]esults/
 [Tt]est[Rr]esult.xml
-
-*.dotCover
-/NDependOut
-.idea
-.dbshell
-/src/web/acord
