@@ -100,10 +100,10 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.Is<RestRequest>(r => r.Parameters.Any(p => p.Name == "client_id" &&
+            mockClient.Setup(c => c.ExecuteAsync(It.Is<IRestRequest>(r => r.Parameters.Any(p => p.Name == "client_id" &&
                                                                                                (string) p.Value ==
                                                                                                expectedClientId)),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Verifiable();
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
@@ -122,10 +122,10 @@ namespace OctoNet.Tests.Authentication
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
             mockClient.Setup(
-                c => c.ExecuteAsync(It.Is<RestRequest>(r => r.Parameters.Any(p => p.Name == "client_secret" &&
+                c => c.ExecuteAsync(It.Is<IRestRequest>(r => r.Parameters.Any(p => p.Name == "client_secret" &&
                                                                                   (string) p.Value ==
                                                                                   expectedClientSecret)),
-                                    It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+                                    It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Verifiable();
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
@@ -143,10 +143,10 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.Is<RestRequest>(r => r.Parameters.Any(p => p.Name == "code" &&
+            mockClient.Setup(c => c.ExecuteAsync(It.Is<IRestRequest>(r => r.Parameters.Any(p => p.Name == "code" &&
                                                                                                (string) p.Value ==
                                                                                                expectedCode)),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Verifiable();
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
@@ -165,8 +165,8 @@ namespace OctoNet.Tests.Authentication
             mockFactory.Setup(f => f.CreateRestClient(expectedBaseUrl))
                 .Returns(mockClient.Object)
                 .Verifiable();
-            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<RestRequest>(),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<IRestRequest>(),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle);
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
 
@@ -184,8 +184,8 @@ namespace OctoNet.Tests.Authentication
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object)
                 .Verifiable();
-            mockClient.Setup(c => c.ExecuteAsync(It.Is<RestRequest>(r => r.Resource == expectedResource),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.Is<IRestRequest>(r => r.Resource == expectedResource),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle);
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
 
@@ -205,8 +205,8 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<RestRequest>(),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<IRestRequest>(),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Callback<RestRequest, Action<RestResponse, RestRequestAsyncHandle>>(
                     (req, c) => c(new RestResponse {Content = responseContent}, _testHandle));
@@ -229,8 +229,8 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<RestRequest>(),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<IRestRequest>(),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Callback<RestRequest, Action<RestResponse, RestRequestAsyncHandle>>(
                     (req, c) => c(new RestResponse(), _testHandle));
@@ -254,8 +254,8 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<RestRequest>(),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<IRestRequest>(),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Callback<RestRequest, Action<RestResponse, RestRequestAsyncHandle>>(
                     (req, c) => c(new RestResponse {Content = responseContent}, _testHandle));
@@ -278,8 +278,8 @@ namespace OctoNet.Tests.Authentication
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object);
-            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<RestRequest>(),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.IsAny<IRestRequest>(),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle)
                 .Callback<RestRequest, Action<RestResponse, RestRequestAsyncHandle>>(
                     (req, c) => c(new RestResponse(), _testHandle));
@@ -301,8 +301,8 @@ namespace OctoNet.Tests.Authentication
             mockFactory.Setup(f => f.CreateRestClient(It.IsAny<string>()))
                 .Returns(mockClient.Object)
                 .Verifiable();
-            mockClient.Setup(c => c.ExecuteAsync(It.Is<RestRequest>(r => r.Method == Method.POST),
-                                                 It.IsAny<Action<RestResponse, RestRequestAsyncHandle>>()))
+            mockClient.Setup(c => c.ExecuteAsync(It.Is<IRestRequest>(r => r.Method == Method.POST),
+                                                 It.IsAny<Action<IRestResponse, RestRequestAsyncHandle>>()))
                 .Returns(_testHandle);
             GitHubOAuthAuthorizer auth = CreateAuthorizer(mockFactory.Object);
 
