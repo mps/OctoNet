@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata schemaVersion="2">
     <id>OctoNet</id>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <title>OctoNet</title>
     <authors>Matthew Strickland</authors>
     <owners>Matthew Strickland</owners>
@@ -14,8 +14,8 @@
     <language>en-US</language>
     <tags>git github OctoNet</tags>
     <dependencies>
-      <dependency id="RestSharp" version="102.7" />
-      <dependency id="NewtonSoft.Json" version="4.5.1" />
+      <dependency id="RestSharp" version="103.1" />
+      <dependency id="NewtonSoft.Json" version="4.5.5" />
     </dependencies>
   </metadata>
 
