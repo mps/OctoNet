@@ -40,11 +40,11 @@ namespace OctoNet.Services
                                             Method.POST,
                                             new IssueDto
                                                 {
-                                                    Title = title,
-                                                    Body = body,
-                                                    Assignee = assignee,
-                                                    Milestone = mileStone,
-                                                    Labels = labels
+                                                    title = title,
+                                                    body = body,
+                                                    assignee = assignee,
+                                                    milestone = mileStone,
+                                                    labels = labels
                                                 });
             return _client.CallApiAsync<Issue>(request,
                                                r => callback(r.Data),
