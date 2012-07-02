@@ -5,7 +5,6 @@ namespace OctoNet
     public static class Constants
     {
         public const string ApiV3Url = "https://api.github.com";
-        public const string ApiV2Url = "https://github.com/api/v2/json";
         public const string GitHubUrl = "https://github.com";
 
         public const string AuthorizeUrl = "https://github.com/login/oauth";

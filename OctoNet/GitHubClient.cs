@@ -98,7 +98,7 @@ namespace OctoNet
                 restRequest.AddBody(request.Body);
             }
 
-            var baseUrl = (request.Version == API.v3) ? Constants.ApiV3Url : Constants.ApiV2Url;
+            var baseUrl = Constants.ApiV3Url;
             var restClient = _factory.CreateRestClient(baseUrl);
             restClient.Authenticator = Authenticator;
 

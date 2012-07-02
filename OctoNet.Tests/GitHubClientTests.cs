@@ -242,7 +242,7 @@ namespace OctoNet.Tests
             mockRestClient.SetupSet(c => c.Authenticator = It.IsAny<IAuthenticator>());
             GitHubClient client = CreateClient(mockFactory.Object);
 
-            var request = new GitHubRequest("resource", API.v2,
+            var request = new GitHubRequest("resource", API.v3,
                                             Method.POST,
                                             new Parameter(expectedKey, expectedValue));
             client.CallApiAsync<object>(request, o => { }, e => { });
@@ -309,7 +309,7 @@ namespace OctoNet.Tests
         [Test]
         public void CallApiAsync_ShouldUseV2BaseUrl_WhenVersion2IsSpecified()
         {
-            string expectedBaseUrl = Constants.ApiV2Url;
+            string expectedBaseUrl = Constants.ApiV3Url;
             var mockRestClient = new Mock<IRestClient>(MockBehavior.Strict);
             var mockFactory = new Mock<IRestClientFactory>(MockBehavior.Strict);
             mockFactory.Setup(f => f.CreateRestClient(expectedBaseUrl))
@@ -321,7 +321,7 @@ namespace OctoNet.Tests
             mockRestClient.SetupSet(c => c.Authenticator = It.IsAny<IAuthenticator>());
             GitHubClient githubClient = CreateClient(mockFactory.Object);
 
-            githubClient.CallApiAsync<object>(new GitHubRequest("foo", API.v2, Method.GET),
+            githubClient.CallApiAsync<object>(new GitHubRequest("foo", API.v3, Method.GET),
                                               o => { },
                                               e => { });
 
