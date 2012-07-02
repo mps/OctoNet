@@ -6,18 +6,18 @@ namespace OctoNet.Models.Dto
     public class IssueDto
     {
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string title { get; set; }
 
         [JsonProperty("body")]
-        public string Body { get; set; }
+        public string body { get; set; }
 
         [JsonProperty("assignee")]
-        public string Assignee { get; set; }
+        public string assignee { get; set; }
 
         [JsonProperty("milestone")]
-        public string Milestone { get; set; }
+        public string milestone { get; set; }
 
         [JsonProperty("labels")]
-        public string[] Labels { get; set; }
+        public string[] labels { get; set; }
     }
 }
